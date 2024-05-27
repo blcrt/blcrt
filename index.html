@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>回忆小学毕业</title>
+		<style>
+			body {
+			        font-family: Arial, sans-serif;
+			        display: flex;
+			        justify-content: center;
+			        align-items: center;
+			        height: 100vh;
+			        margin: 0;
+			    }
+			    #timeSince {
+			        font-size: 2em;
+			    }
+			    
+            		.footer {
+            			position: fixed;
+           			left: 0;
+           			bottom: 0;
+            			width: 100%;
+            			background-color:#ffffff;
+            			color: black;
+           	 		text-align: center;
+            		}
+        
+		</style>
+	</head>
+	<body>
+		<div id="timeSince">正在计算……</div>
+		<script>
+			function getTimeDifference(dateStr) {
+			        const targetDate = new Date(dateStr);
+			        const now = new Date();
+			        
+			        // 计算总毫秒数
+			        const difference = now - targetDate;
+			
+			        // 将毫秒数转换为天、小时、分钟和秒
+			        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+			        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+			        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+			        const years=(days / 365).toFixed(5)
+			        return `距离小学毕业已过${days}天${hours}小时${minutes}分钟${seconds}秒\n合约${years}年`;
+			    }
+				setInterval(() => {
+			    		document.getElementById('timeSince').innerText = `${getTimeDifference('2023-06-30')}\n*毕业时间按照2023.6.30 00:00计算`;
+			    	},1000)
+		</script>
+	</body>
+	<footer class="footer">
+		——永远的文新小学2017级2班
+	</footer>
+</html>
